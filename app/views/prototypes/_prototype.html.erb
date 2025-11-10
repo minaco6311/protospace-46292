@@ -1,0 +1,18 @@
+<div class="card">
+  <%# 画像部分を詳細ページへのリンクにする %>
+  <%= link_to prototype_path(prototype) do %>
+    <%= image_tag prototype.image, class: :card__img if prototype.image.attached? %>
+  <% end %>
+
+  <div class="card__body">
+    <%# タイトル部分も詳細ページへのリンクにする %>
+    <%= link_to prototype.title, prototype_path(prototype), class: :card__title %>
+    <p class="card__catchcopy"><%= prototype.catch_copy %></p>
+  </div>
+
+  <div class="card__footer">
+    <p class="card__user">
+      by <%= link_to prototype.user.name, user_path(prototype.user), class: :card__user %>
+    </p>
+  </div>
+</div>

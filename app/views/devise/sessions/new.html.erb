@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">ログイン</h2>
+
+      <%= form_with scope: :user, url: user_session_path, local: true do |f| %>
+
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "user_email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, "パスワード" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", id: "user_password" %>
+        </div>
+
+        <%# （任意）「ログイン状態を保持する」チェックボックス %>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, id: "user_remember_me" %>
+            <%= f.label :remember_me, "ログイン状態を保持する" %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "ログイン", class: :form__btn %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
