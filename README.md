@@ -46,3 +46,6 @@
 - Comment
   - belongs_to :user
   - belongs_to :prototype
+
+# Protospace
+# trigger migration test

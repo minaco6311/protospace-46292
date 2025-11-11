@@ -4,8 +4,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # サインアップ時に許可するパラメータを追加
+  # サインアップ時・アカウント更新時に許可するパラメータを追加
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :profile, :affiliation, :position])
+    added_attrs = [:name, :profile, :occupation, :position]
+
+    devise_parameter_sanitizer.permit(:sign_up,        keys: added_attrs)
+    devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
   end
 end
